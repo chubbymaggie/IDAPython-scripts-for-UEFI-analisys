@@ -8,13 +8,13 @@ import os
 # Закрывает файл с расширением '.i64', сохранив базу данных.
 # создает '.i64' из '.bin'
 def _close_programm():
-    pass #qexit(0)
+    qexit(0)
 
 
 
 #
 def _add_apriory_guid_to_head(guid, guid_addr, _num_comm_line):
-    file = open('C:\Work\Programs\IdaScripts\Create_i64_from_bin\Guid.xref', 'r')
+    file = open('C:\Work\Programs\IDAPython-scripts-for-UEFI-analisys\Create_i64_from_bin\Guid.xref', 'r')
     for line in file:
         if line[0:8] == guid[2:-1].upper():
             ExtLinA(0, _num_comm_line, ' - файл %s' % line[37:])
@@ -24,7 +24,7 @@ def _add_apriory_guid_to_head(guid, guid_addr, _num_comm_line):
 
 #
 def _add_guid_to_head(guid, _num_comm_line):
-    file = open('C:\Work\Programs\IdaScripts\Create_i64_from_bin\Guid.xref', 'r')
+    file = open('c:\Work\Programs\IDAPython-scripts-for-UEFI-analisys\Create_i64_from_bin\Guid.xref', 'r')
     for line in file:
         if guid[2:-1].upper() in line:
             ExtLinA(0, _num_comm_line, line)
