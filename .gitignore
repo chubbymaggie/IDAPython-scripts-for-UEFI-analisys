@@ -1,6 +1,6 @@
 # Lines starting with '#' are considered comments.
 
-#Игнорирование папки 'TEST'
+#Ignored 'TEST' folder
 _TEST/
 
 #
