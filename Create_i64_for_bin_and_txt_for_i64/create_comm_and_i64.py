@@ -16,7 +16,7 @@ def _close_programm():
 def _make_guid_struct():
     add_struc(-1,"GUID",0)
     id = get_struc_id("GUID")
-    AddStrucMember(id, "Data1",	0,	0x20000400,	-1,	4)
+    AddStrucMember(id, "Data1",	0,	    0x20000400,	-1,	4)
     AddStrucMember(id, "Data2",	0X4,	0x10000400,	-1,	2)
     AddStrucMember(id, "Data3",	0X6,	0x10000400,	-1,	2)
     AddStrucMember(id, "Data4",	0X8,	0x000400,	-1,	8)
