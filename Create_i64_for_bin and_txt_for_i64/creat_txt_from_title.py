@@ -21,13 +21,13 @@ def _find_comment():
     if get_entry_qty() == 1:
         _comm = GetFunctionCmt(get_entry_ordinal(0), 1)
     else:
-        _str = ''
+        _comm = ''
         for i in range(0,100):
             if get_extra_cmt(0, idaapi.E_PREV + i) != None:
-                _str += get_extra_cmt(0, idaapi.E_PREV + i)
-                if _str[-1:] != ' ':
-                    _str += ' '
-    return _str.decode('cp866').encode('cp1251')
+                _comm += get_extra_cmt(0, idaapi.E_PREV + i)
+                if _comm[-1:] != ' ':
+                    _comm += ' '
+    return _comm.decode('cp866').encode('cp1251')
 
 
         

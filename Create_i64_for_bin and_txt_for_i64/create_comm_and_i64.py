@@ -12,7 +12,7 @@ def _close_programm():
 
 
 
-#
+# 
 def _make_guid_struct():
     add_struc(-1,"GUID",0)
     id = get_struc_id("GUID")
@@ -30,10 +30,12 @@ def _num_dependency_guid(_start, _end, _size):
     return _num_dependency_guid
 
 
+
 #
 def _num_apriori_guid(_start, _end, _size):
     _num_aprior_guid = (_end - _start)//(_size)
     return _num_aprior_guid
+
 
 
 #
@@ -50,6 +52,7 @@ def _make_dependency():
         _curr_addr += _size_guid
 
 
+
 #
 def _make_apriory():
     start_addr = cvar.inf.minEA
@@ -63,29 +66,24 @@ def _make_apriory():
         _curr_addr += size_guid    
 
 
-#
-def _make_cmt(_file_name):
-    _content = open('%s' % _file_name,'r').read()
-    if _content != None:
-        ExtLinA(0,0,'%s' % _content.decode('cp1251').encode('cp866'))
 
+# 
+def _make_cmt(_file_name):
+    i = 0
+    for line in open('%s' % _file_name,'r').readlines():
+        if line != None:
+            ExtLinA(0,i,'%s' % line.decode('cp1251').encode('cp866'))
+            i += 1
+            
 
 
 #
 def _sel_type_of_section(_name):
-    if _name[2:] == r'DXE dependency section.bin':
+    if _name[6:] == r'dependency section.bin':
         _make_dependency()
         _make_cmt('%s.txt' % _name[:-4])
 
-    if _name[2:] == r'DXE apriory section.bin':
-        _make_apriory()
-        _make_cmt('%s.txt' % _name[:-4])
-   
-    if _name[2:] == r'PEI dependency section.bin':
-        _make_dependency()
-        _make_cmt('%s.txt' % _name[:-4])
-
-    if _name[2:] == r'PEI apriory section.bin':
+    if _name[6:] == r'apriory section.bin':
         _make_apriory()
         _make_cmt('%s.txt' % _name[:-4])
         
@@ -98,14 +96,12 @@ def _sel_type_of_section(_name):
         _make_cmt('%s.txt' % _name[:-4])
         
 
-
             
 #
 def _clear_all():
     do_unknown_range(cvar.inf.minEA, cvar.inf.maxEA - cvar.inf.minEA, DOUNK_EXPAND)    
     for i in range(0, 10):
         del_extra_cmt(cvar.inf.minEA, E_PREV + i)
-
 
 
 
@@ -117,7 +113,7 @@ def main():
     _clear_all()
     _file_name = get_root_filename()
     _sel_type_of_section(_file_name)
-    #_close_programm()
+    _close_programm()
 
 
 
