@@ -3,4 +3,5 @@
 #Ignored 'TEST' folder
 _TEST/
 
-#
+#Ignored '_OLD' folder
+_OLD/
